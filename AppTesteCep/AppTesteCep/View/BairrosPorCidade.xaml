@@ -3,10 +3,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppTesteCep.View.BairrosPorCidade">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Picker x:Name="pck_estado"
+                            SelectedIndexChanged="pck_estado_SelectedIndexChanged"
+                            Title="Selecione o Estado:">
+                        <Picker.Items>
+                            <x:String>SP</x:String>
+                            <x:String>MG</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    <Picker x:Name="pck_cidade"
+                            SelectedIndexChanged="pck_cidade_SelectedIndexChanged"
+                            ItemDisplayBinding="{Binding descricao }"
+                            Title="Selecione a Cidade">
+                    </Picker>
+                </StackLayout>
+
+                <ListView x:Name="lst_bairros">
+                    <ListView.Header>
+                        <StackLayout>
+                            <Label Text="Nome do Bairro:" />
+                        </StackLayout>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding descricao_bairro}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+                <StackLayout x:Name="carregando"
+                             IsVisible="False"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+
+                    <Frame Opacity="0.95"
+                           BackgroundColor="#333"
+                           CornerRadius="10"
+                           BorderColor="#00A54F"
+                           Padding="80">
+                        <StackLayout>
+                            <ActivityIndicator IsRunning="True" Color="#00A54f" />
+                            <Label Text="carregando..." HorizontalOptions="Center" TextColor="#00A54F"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+            </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
+        
