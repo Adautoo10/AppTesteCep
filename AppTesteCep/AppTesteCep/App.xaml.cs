@@ -10,7 +10,7 @@ namespace AppTesteCep
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Menu());
         }
 
         protected override void OnStart()
