@@ -19,6 +19,7 @@ namespace AppTesteCep
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new View.BuscaCepPorLogradouro() );
 
         }
     }
