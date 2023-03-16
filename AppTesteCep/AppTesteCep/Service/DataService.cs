@@ -55,7 +55,8 @@ namespace AppTesteCep.Service
         }
 
         public static async Task<List<Cidade>> GetCidadesByEstado(string uf)
-        {
+        {         
+
             List<Cidade> arr_cidades = new List<Cidade>();
 
             using (HttpClient client = new HttpClient())
