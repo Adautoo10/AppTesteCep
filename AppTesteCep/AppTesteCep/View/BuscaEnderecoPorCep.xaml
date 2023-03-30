@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTesteCep.View.BuscaEnderecoPorCep"
+                Title="Buscar Endereço Por CEP">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid ColumnDefinitions="*,100"
+                          RowDefinitions="50">
+                <SearchBar x:Name="txt_cep"
+                       Placeholder="Qual o seu CEP?" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="Buscar"
+                    FontAttributes="Bold" Clicked="Button_Clicked"  Margin="5"
+                     Grid.Row="0" Grid.Column="1"/>
+            </Grid>
+
+            <ListView x:Name="lst_end" Margin="5">
+                <ListView.Header>
+                    <Grid ColumnDefinitions="Auto, *,*,*, Auto"
+                          RowDefinitions="Auto" BackgroundColor="DarkGreen">
+                        
+                        <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"
+                               Text="CEP" FontAttributes="Bold"  FontSize="13" TextColor="white"
+                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                   
+                        <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+                               Text="Cidade" FontAttributes="Bold" FontSize="13" TextColor="white"
+                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+
+                        <Label Grid.Row="0" Grid.Column="3" HorizontalOptions="Center"
+                               Text="Código do IBGE" FontAttributes="Bold" FontSize="13" TextColor="white"
+                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        
+                    </Grid>
+                </ListView.Header>
+
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="Auto, *,*,*, Auto"
+                                  RowDefinitions="110">
+                                <Label Grid.Row="0" Grid.Column="0"
+                               Text="{Binding CEP}" TextColor="black" 
+                                       FontSize="12"/>
+
+                                <Label Grid.Row="0" Grid.Column="1" 
+                                       Grid.ColumnSpan="1"
+                               Text="{Binding descricao_bairro}" TextColor="black" 
+                                       FontSize="12"/>
+
+                                <Label Grid.Row="0" Grid.Column="3" 
+                                       Grid.ColumnSpan="2"
+                               Text="{Binding descricao_cidade}" TextColor="black" 
+                                       FontSize="12"/>
+                         
+                                <Label Grid.Row="0" Grid.Column="4" 
+                                       Grid.ColumnSpan="3"
+                               Text="{Binding codigo_cidade_ibge}" TextColor="black" 
+                                       FontSize="12"/>
+
+                                
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ActivityIndicator x:Name="carregando" 
+                               IsRunning="False"
+                               Color="#004677" WidthRequest="50"
+                               VerticalOptions="EndAndExpand">
+
+            </ActivityIndicator>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
